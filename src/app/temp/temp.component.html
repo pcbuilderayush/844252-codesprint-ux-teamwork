@@ -1,0 +1,251 @@
+<form [formGroup]="loginForm" >
+
+    <p>
+        <label>Name
+            <input class="form-control" formControlName="fname" type="text" placeholder="Enter first name here" required id="name" pattern="[A-Za-z]{3,}" autofocus>
+            <input class="form-control" formControlName="lname" type="text" placeholder="Enter last name here" required pattern="[A-Za-z]{3,}">
+        </label>
+    </p>
+    <div class="error-messages">
+        <ng-container *ngFor="let error of error_messages.fname">
+            <div class="error-message" *ngIf="loginForm.get('fname').hasError(error.type) && (loginForm.get('fname').dirty || loginForm.get('fname').touched)">
+                {{ error.message }}
+            </div>
+        </ng-container>
+    </div>
+    <div class="error-messages">
+        <ng-container *ngFor="let error of error_messages.lname">
+            <div class="error-message" *ngIf="loginForm.get('lname').hasError(error.type) && (loginForm.get('lname').dirty || loginForm.get('lname').touched)">
+                {{ error.message }}
+            </div>
+        </ng-container>
+    </div>
+
+    <p>
+        <label>Age
+            <input class="form-control" formControlName="age" type="number" name="age" id="age" pattern="[0-9]{2}" min="18" max="60">
+        </label>
+    </p>
+    <div class="error-messages">
+        <ng-container *ngFor="let error of error_messages.age">
+            <div class="error-message" *ngIf="loginForm.get('age').hasError(error.type) && (loginForm.get('age').dirty || loginForm.get('age').touched)">
+                {{ error.message }}
+            </div>
+        </ng-container>
+    </div>
+
+
+
+    <p>
+        <label>Email
+            <input class="form-control" formControlName="email" type="email" name="email_address">
+        </label>
+    </p>
+    <div class="error-messages">
+        <ng-container *ngFor="let error of error_messages.email">
+            <div class="error-message" *ngIf="loginForm.get('email').hasError(error.type) && 
+                        (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                {{ error.message }}
+            </div>
+        </ng-container>
+    </div>
+
+    <p>
+        <label>Phone
+            <input class="form-control" formControlName="mobile" type="tel" id="phone" min="10" max="60" pattern="[1-9]\d{9}">
+        </label>
+    </p>
+    <div class="error-messages">
+        <ng-container *ngFor="let error of error_messages.mobile">
+            <div class="error-message" *ngIf="loginForm.get('mobile').hasError(error.type) && 
+          (loginForm.get('mobile').dirty || loginForm.get('mobile').touched)">
+                {{ error.message }}
+            </div>
+        </ng-container>
+    </div>
+
+    <fieldset >
+        <legend>Address</legend>
+        <input class="form-control" formControlName="streetadress" type="text" placeholder="Enter the street adress" size="70"><br><br>
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.streetadress">
+                <div class="error-message" *ngIf="loginForm.get('streetadress').hasError(error.type) && 
+              (loginForm.get('streetadress').dirty || loginForm.get('streetadress').touched)">
+                    {{ error.message }}
+                </div>
+            </ng-container>
+        </div>
+        <input class="form-control" formControlName="city" placeholder="Enter city" type="text" id="city" pattern="[A-Za-z]{3,}">
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.city">
+                <div class="error-message" *ngIf="loginForm.get('city').hasError(error.type) && 
+              (loginForm.get('city').dirty || loginForm.get('city').touched)">
+                    {{ error.message }}
+                </div>
+            </ng-container>
+        </div>
+       
+        <input class="form-control" formControlName="pincode" type="number" placeholder="Enter pincode" pattern="[0-9]{6}">
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.pincode">
+                <div class="error-message" *ngIf="loginForm.get('pincode').hasError(error.type) && 
+              (loginForm.get('pincode').dirty || loginForm.get('pincode').touched)">
+                    {{ error.message }}
+                </div>
+            </ng-container>
+        </div>
+        <input class="form-control" formControlName="country" type="text"  placeholder="Select country" required list="destinations" id="address">
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.country">
+                <div class="error-message" *ngIf="loginForm.get('country').hasError(error.type) && 
+              (loginForm.get('country').dirty || loginForm.get('country').touched)">
+                    {{ error.message }}
+                </div>
+            </ng-container>
+        </div>
+
+        <datalist id="destinations">
+            <option value="India" >
+            <option value="USA">
+            <option value="China">
+            <option value="Japan">
+        </datalist>
+
+       
+
+
+    </fieldset>
+
+    <br>
+
+ 
+
+    <fieldset id="group1">
+        <legend>Trainer preferences</legend>
+        <p><label> <input formControlName="trainer" type="radio"  onclick="myFunction1(this.value)" value="male" required  id="tpref"> MALE</label></p>
+        <p><label> <input formControlName="trainer" type="radio"  onclick="myFunction1(this.value)"value="female" required  id="tpref"> FEMALE</label></p>
+        <p><label> <input formControlName="trainer" type="radio"  onclick="myFunction1(this.value)"value="no_preference" required  id="tpref">NO CHOICE</label></p>
+
+        <div class="error-messages">
+            <ng-container *ngFor="let error of error_messages.trainer">
+                <div class="error-message" *ngIf="loginForm.get('trainer').hasError(error.type) && 
+              (loginForm.get('trainer').dirty || loginForm.get('trainer').touched)">
+                    {{ error.message }}
+                </div>
+            </ng-container>
+        </div>
+    </fieldset>
+    <br>
+
+    <fieldset>
+    <div id="wrapper">
+        <label for="yes_no_radio"><h3>Do you Need a physiotherapist?</h3></label>
+      <p>
+      <input type="radio" name="yes_no" checked/>Yes
+      </p>
+      <p>
+      <input type="radio" name="yes_no"/>No
+      </p>
+      </div>
+    </fieldset>
+    <br>
+    
+
+
+    <tr><td><h2>Appointment :</h2></td></tr>
+    <table  cellspacing="2" cellpadding="4">
+        <tr>
+            <td><strong>Day</strong></td>
+            <td><strong>7-9a.m</strong></td>
+            <td><strong>9-11am</strong></td>
+            <td><strong>11-1pm</strong></td>
+            <td><strong>1-3pm</strong></td>
+            <td><strong>3-5pm</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Monday</strong></td>
+            <td><input type="radio" name="one" value="1">1</td>
+            <td><input type="radio" name="one" value="2">2</td>
+            <td><input type="radio" name="one" value="3">3</td>
+            <td><input type="radio" name="one" value="4">4</td>
+            <td><input type="radio" name="one" value="5">5</td>
+        </tr>
+        <tr>
+            <td><strong>Tuesday</strong></td>
+            <td><input type="radio" name="sev" value="1">1</td>
+            <td><input type="radio" name="sev" value="2">2</td>
+            <td><input type="radio" name="sev" value="3">3</td>
+            <td><input type="radio" name="sev" value="4">4</td>
+            <td><input type="radio" name="sev" value="5">5</td>
+        </tr>
+        <tr>
+            <td><strong>Wednesday</strong></td>
+            <td><input type="radio" name="six" value="1">1</td>
+            <td><input type="radio" name="six" value="2">2</td>
+            <td><input type="radio" name="six" value="3">3</td>
+            <td><input type="radio" name="six" value="4">4</td>
+            <td><input type="radio" name="six" value="5">5</td>
+        </tr>
+        <tr>
+            <td><strong>Thursday</strong></td>
+            <td><input type="radio" name="five" value="1">1</td>
+            <td><input type="radio" name="five" value="2">2</td>
+            <td><input type="radio" name="five" value="3">3</td>
+            <td><input type="radio" name="five" value="4">4</td>
+            <td><input type="radio" name="five" value="5">5</td>
+        </tr>
+        <tr>
+            <td><strong>Friday</strong></td>
+            <td><input type="radio" name="four" value="1">1</td>
+            <td><input type="radio" name="four" value="2">2</td>
+            <td><input type="radio" name="four" value="3">3</td>
+            <td><input type="radio" name="four" value="4">4</td>
+            <td><input type="radio" name="four" value="5">5</td>
+        </tr>
+        <tr>
+            <td><strong>Saturday</strong></td>
+            <td><input type="radio" name="three" value="1">1</td>
+            <td><input type="radio" name="three" value="2">2</td>
+            <td><input type="radio" name="three" value="3">3</td>
+            <td><input type="radio" name="three" value="4">4</td>
+            <td><input type="radio" name="three" value="5">5</td>
+        </tr>
+        <tr>
+            <td><strong>Sunday</strong></td>
+            <td><input type="radio" name="two" value="1">1</td>
+            <td><input type="radio" name="two" value="2">2</td>
+            <td><input type="radio" name="two" value="3">3</td>
+            <td><input type="radio" name="two" value="4">4</td>
+            <td><input type="radio" name="two" value="5">5</td>
+        </tr>
+    </table>
+
+    
+    <div>
+      <label><h3>Select a Package :</h3></label>
+      <input type="radio" name="reason" value="package" id="1">One Time Assessment Only (INR 500)<br/>
+      <input type="radio" name="reason" value="package" id="2">Weekly Sessions (INR 400/session)<br/>
+      <input type="radio" name="reason" value="package" id="3">12 Weekly Sessions (INR 300/sessions)<br/>
+      <input type="radio" name="reason" value="package" id="4">Other <input type="text" name="Other_package" />    
+      
+    </div>
+
+
+
+   <p>
+        <label>
+           <h3> Quote:</h3>
+        </label>
+    </p>
+    Price: <input type="text" id="pkg">
+
+     <div class="form-group">
+        <div class="col-md-4">
+            <br>
+            <button class="form-control btn btn-outline-dark" type="submit">PLACE APPOINTMENT</button>
+        </div>
+    </div> 
+
+   
+
+</form>

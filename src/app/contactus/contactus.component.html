@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+   
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+img {
+  float: left;
+}
+
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit]:hover {
+  background-color:#45a049;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color:#808080 ;
+}
+
+ .container {
+  border-radius: 5px;
+  background-color:#F0FFF0;
+  padding: 10px;
+}
+
+.column {
+  float: right;
+  width: 50%;
+  margin-top: 6px;
+  padding: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+    <img src="../../assets/fit.jpg" style="width:600px;height:700px">
+<div class="container">
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+  </div>
+  <div class="row">
+    <div class="column">
+        <form action="/action_page.php" method="get" id="contactform"></form>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your Name">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your Name">
+	<label  for="email">Email</label>
+    <input type="text" id="email" name="Email" placeholder="Your Email" pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required />
+    <br />
+    <label for="loc">Location</label>
+        <select id="loc" name="location">
+          <option value="city">Select City</option>
+          <option value="bangalore">Bangalore</option>
+	      <option value="hyderabad">Hyderabad</option>
+          <option value="chennai">Chennai</option>
+          <option value="pune"></option>
+        </select>
+        <label for="msg">Drop a Message</label>
+        <textarea id="Drop a message" name="subject" placeholder="Your Message" style="height:170px"></textarea>
+        <button type="submit" form="" value="Submit">Submit</button>
+     
+ 
+  </div>
+</div>
+</div>
+</body>
+</html>
+
+
